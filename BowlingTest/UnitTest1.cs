@@ -10,7 +10,7 @@ namespace BowlingTest
         [Test]
         public void Hookup()
         {
-            Assert.Pass();
+
         }
 
         [Test]
