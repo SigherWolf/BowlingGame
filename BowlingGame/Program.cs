@@ -5,6 +5,7 @@ namespace BowlingGame
     public class Game
     {
         ArrayList frames;
+        ArrayList throws;
 
         public static void Main(string[] args)
         {
@@ -14,22 +15,37 @@ namespace BowlingGame
         public Game()
         {
             frames = new ArrayList();
+            throws = new ArrayList();
         }
 
         public void OpenFrame(int firstThrow, int secondThrow)
         {
-            frames.Add(new OpenFrame(firstThrow, secondThrow));
+            throws.Add(firstThrow);
+            throws.Add(secondThrow);
+            frames.Add(new OpenFrame(throws, throws.Count, firstThrow, secondThrow));
+        }
+
+        public void Spare(int firstThrow, int secondThrow)
+        {
+            throws.Add(firstThrow);
+            throws.Add(secondThrow);
+            frames.Add(new SpareFrame(throws, throws.Count, firstThrow, secondThrow));
         }
 
         public int Score()
         {
             int total = 0;
-            foreach (OpenFrame frame in frames)
+            foreach (IFrame frame in frames)
             {
                 total += frame.Score();
             }
 
             return total;
         }
+    }
+
+    public interface IFrame
+    {
+        int Score();
     }
 }
