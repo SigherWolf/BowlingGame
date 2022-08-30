@@ -43,9 +43,4 @@ namespace BowlingGame
             return total;
         }
     }
-
-    public interface IFrame
-    {
-        int Score();
-    }
 }
