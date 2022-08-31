@@ -8,6 +8,7 @@ namespace BowlingTest
         [SetUp]
         public void Setup()
         {
+            // Arrange
             game = new Game();
         }
 
@@ -62,6 +63,15 @@ namespace BowlingTest
 
             // Assert
             Assert.That(game.Score(), Is.EqualTo(23));
+        }
+
+        [Test]
+        public void Strike()
+        {
+            game.Strike();
+            game.OpenFrame(5, 3);
+            ManyOpenFrames(8, 0, 0);
+            Assert.That(game.Score(), Is.EqualTo(26));
         }
     }
 }

@@ -3,25 +3,18 @@
 namespace BowlingGame
 {
 
-    // OpenFrame implements the interface IFrame
-    public class OpenFrame : IFrame
+    // OpenFrame extends the abstract class Frame
+    public class OpenFrame : Frame
     {
-        ArrayList throws;
-        int startingThrow;
-        int score;
-
-        public OpenFrame(ArrayList throws, int startingThrow, int firstThrow, int secondThrow)
+        public OpenFrame(ArrayList throws, int startingThrow, int firstThrow, int secondThrow) : base(throws)
         {
-            this.throws = throws;
-            this.startingThrow = startingThrow;
             throws.Add(firstThrow);
             throws.Add(secondThrow);
-            score = firstThrow + secondThrow;
         }
 
-        public int Score()
+        override public int Score()
         {
-            return score;
+            return (int) throws[startingThrow] + (int) throws[startingThrow + 1];
         }
     }
 }

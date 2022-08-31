@@ -32,10 +32,15 @@ namespace BowlingGame
             frames.Add(new SpareFrame(throws, throws.Count, firstThrow, secondThrow));
         }
 
+        public void Strike()
+        {
+            frames.Add(new StrikeFrame(throws));
+        }
+
         public int Score()
         {
             int total = 0;
-            foreach (IFrame frame in frames)
+            foreach (Frame frame in frames)
             {
                 total += frame.Score();
             }

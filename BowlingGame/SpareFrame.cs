@@ -2,16 +2,11 @@
 
 namespace BowlingGame
 {
-    // SpareFrame implements the interface IFrame
-    public class SpareFrame : IFrame
+    // SpareFrame extends the abstract class Frame
+    public class SpareFrame : Frame
     {
-        ArrayList throws;
-        int startingThrow;
-
-        public SpareFrame(ArrayList throws, int startingThrow, int firstThrow, int secondThrow)
+        public SpareFrame(ArrayList throws, int startingThrow, int firstThrow, int secondThrow) : base(throws)
         {
-            this.throws = throws;
-            this.startingThrow = startingThrow;
             throws.Add(firstThrow);
             throws.Add(secondThrow);
         }
@@ -21,7 +16,7 @@ namespace BowlingGame
             return (int) throws[startingThrow + 2];
         }
 
-        public int Score()
+        override public int Score()
         {
             return 10 + NextBall();
         }
