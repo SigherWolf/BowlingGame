@@ -11,7 +11,12 @@ namespace BowlingGame
 
         override public int Score()
         {
-            return 10 + (int) throws[startingThrow + 1] + (int) throws[startingThrow + 2];
+            return 10 + (int) throws[startingThrow + FrameSize()] + (int) throws[startingThrow + FrameSize() + 1];
+        }
+
+        override protected int FrameSize()
+        {
+            return 1;
         }
     }
 }

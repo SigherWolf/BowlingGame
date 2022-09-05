@@ -14,5 +14,6 @@ namespace BowlingGame
         }
 
         public abstract int Score();
+        protected abstract int FrameSize();
     }
 }

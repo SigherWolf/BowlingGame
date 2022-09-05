@@ -10,7 +10,6 @@ namespace BowlingGame
         public static void Main(string[] args)
         {
 
-
         }
 
         public Game()
@@ -23,19 +22,24 @@ namespace BowlingGame
         {
             throws.Add(firstThrow);
             throws.Add(secondThrow);
-            frames.Add(new OpenFrame(throws, throws.Count, firstThrow, secondThrow));
+            frames.Add(new OpenFrame(throws, firstThrow, secondThrow));
         }
 
         public void Spare(int firstThrow, int secondThrow)
         {
             throws.Add(firstThrow);
             throws.Add(secondThrow);
-            frames.Add(new SpareFrame(throws, throws.Count, firstThrow, secondThrow));
+            frames.Add(new SpareFrame(throws, firstThrow, secondThrow));
         }
 
         public void Strike()
         {
             frames.Add(new StrikeFrame(throws));
+        }
+
+        public void BonusRoll(int roll)
+        {
+            frames.Add(new BonusRoll(throws, roll));
         }
 
         public int Score()

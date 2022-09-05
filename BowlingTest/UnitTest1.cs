@@ -19,26 +19,23 @@ namespace BowlingTest
         }
 
         [Test]
-        // Ensures balls that end up in the gutter result in a score of 0 (since no pins were hit)
         public void GutterBalls()
         {
+            // Act
             ManyOpenFrames(10, 0, 0);
+
+            // Assert
             Assert.That(game.Score(), Is.EqualTo(0));
         }
 
         [Test]
         public void Threes()
         {
+            // Act
             ManyOpenFrames(10, 3, 3);
+            
+            // Assert
             Assert.That(game.Score(), Is.EqualTo(60));
-        }
-
-        private void ManyOpenFrames(int count, int firstThrow, int secondThrow)
-        {
-            for (int frameNumber = 0; frameNumber < count; frameNumber++)
-            {
-                game.OpenFrame(firstThrow, secondThrow);
-            }
         }
 
         [Test]
@@ -68,10 +65,78 @@ namespace BowlingTest
         [Test]
         public void Strike()
         {
+            // Act
             game.Strike();
             game.OpenFrame(5, 3);
             ManyOpenFrames(8, 0, 0);
+
+            // Assert
             Assert.That(game.Score(), Is.EqualTo(26));
+        }
+
+        [Test]
+        public void SpareFinalFrame()
+        {
+            // Act
+            ManyOpenFrames(9, 0, 0);
+            game.Spare(4, 6);
+            game.BonusRoll(5);
+
+            // Assert
+            Assert.That(game.Score(), Is.EqualTo(15));
+        }
+
+        [Test]
+        public void StrikeFinalFrame()
+        {
+            // Act
+            ManyOpenFrames(9, 0, 0);
+            game.Strike();
+            game.BonusRoll(5);
+            game.BonusRoll(3);
+
+            // Assert
+            Assert.That(game.Score(), Is.EqualTo(18));
+        }
+
+        [Test]
+        public void PerfectGame()
+        {
+            // Act
+            for (int i = 0; i < 10; i++)
+            {
+                game.Strike();
+            }
+
+            game.BonusRoll(10);
+            game.BonusRoll(10);
+
+            // Assert
+            Assert.That(game.Score(), Is.EqualTo(300));  
+        }
+
+        [Test]
+        public void StrikeSpareGame()
+        {
+            // Act
+            for (int i = 0; i < 5; i++)
+            {
+                game.Strike();
+                game.Spare(4, 6);
+            }
+
+            game.BonusRoll(10);
+
+            // Assert
+            Assert.That(game.Score(), Is.EqualTo(200));
+        }
+
+        private void ManyOpenFrames(int count, int firstThrow, int secondThrow)
+        {
+            for (int frameNumber = 0; frameNumber < count; frameNumber++)
+            {
+                game.OpenFrame(firstThrow, secondThrow);
+            }
         }
     }
 }
