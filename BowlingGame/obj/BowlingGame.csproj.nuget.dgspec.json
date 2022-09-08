@@ -11,7 +11,7 @@
         "projectName": "BowlingGame",
         "projectPath": "C:\\Users\\watsont\\source\\repos\\BowlingGame\\BowlingGame\\BowlingGame.csproj",
         "packagesPath": "C:\\Users\\watsont\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\watsont\\Source\\Repos\\BowlingGame\\BowlingGame\\obj\\",
+        "outputPath": "C:\\Users\\watsont\\source\\repos\\BowlingGame\\BowlingGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\watsont\\AppData\\Roaming\\NuGet\\NuGet.Config",
