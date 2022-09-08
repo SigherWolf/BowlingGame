@@ -9,16 +9,16 @@
 
             for (int i = 0; i < 10; i++)
             {
-                int initialScore = r.Next(0, 11);
-                score.Add(initialScore);
+                int pinsHit = r.Next(0, 11);
+                score.Add(pinsHit);
 
-                if (initialScore == 10)
+                if (pinsHit == 10)
                 {
                     score.Add(0);
                 } 
                 else
                 {
-                    score.Add(SecondRoll(initialScore));
+                    score.Add(SecondRoll(pinsHit));
                 }
             }
 
@@ -27,9 +27,9 @@
 
         public static int SecondRoll(int pinsHit)
         {
-            Random r2 = new Random();
+            Random r = new Random();
             int remainingPins = 11 - pinsHit;
-            int secondRoll = r2.Next(0, remainingPins);
+            int secondRoll = r.Next(0, remainingPins);
             return secondRoll;
         }
 

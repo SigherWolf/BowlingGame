@@ -19,7 +19,7 @@ namespace BowlingTest
         }
 
         [Test]
-        public void GutterBalls()
+        public void GutterBall_is_zero()
         {
             // Act
             ManyOpenFrames(10, 0, 0);
